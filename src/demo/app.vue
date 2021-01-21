@@ -25,6 +25,7 @@
                            v-on:deactivated="deactivateEv(index)"
                            v-on:dragging="changePosition($event, index)"
                            v-on:resizing="changeSize($event, index)"
+                           v-on:rotating="changeRotate($event, index)"
             >
                 <div class="filler" :style="{backgroundColor:rect.color}"></div>
             </VueDragResize>
@@ -131,6 +132,9 @@
                 this.$store.dispatch('rect/setLeft', {id: index, left: newRect.left});
                 this.$store.dispatch('rect/setWidth', {id: index, width: newRect.width});
                 this.$store.dispatch('rect/setHeight', {id: index, height: newRect.height});
+            },
+            changeRotate(rotate,index){
+                this.$store.dispatch('rect/setRotate', {id: index, angle: rotate});
             }
         }
     }

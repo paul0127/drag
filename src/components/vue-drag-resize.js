@@ -12,7 +12,7 @@ const styleMapping = {
 };
 
 export default {
-    name: 'vue-drag-resize',
+    name: 'vue-drag-resize', 
     props: {
         stickSize: {
           type: Number, default: 8,
@@ -175,7 +175,8 @@ export default {
             right: null,
             bottom: null,
             minWidth: this.minw,
-            minHeight: this.minh
+            minHeight: this.minh,
+            rotate:this.angle
         }
     },
 
@@ -279,6 +280,9 @@ export default {
             }
             if (this.bodyDrag) {
                 this.bodyUp(ev)
+            }
+            if (this.rotateDrag) {
+                this.rotateUp(ev)
             }
         },
 
@@ -618,17 +622,27 @@ export default {
             this.rotateStartPos.right = this.right;
             this.rotateStartPos.top = this.top;
             this.rotateStartPos.bottom = this.bottom;
+            this.rotateStartPos.width = this.rawWidth
+            this.rotateStartPos.height = this.rawHeight
+
+            let cx = this.rotateStartPos.left + this.rotateStartPos.width / 2,
+            cy = this.rotateStartPos.top + this.rotateStartPos.height / 2,
+            startAngle = (180 / Math.PI) * Math.atan2(this.rotateStartPos.mouseY - cy, this.rotateStartPos.mouseX - cx),
+            rotation = this.rotate;
+            this._rotateOpt = { cx, cy, startAngle, rotation };
         },
         rotateMove(ev){
-            const rotateStartPos = this.rotateStartPos;
-            const pageX = typeof ev.pageX !== 'undefined' ? ev.pageX : ev.touches[0].pageX;
-            const pageY = typeof ev.pageY !== 'undefined' ? ev.pageY : ev.touches[0].pageY;
-
-            const delta = {
-                x: (rotateStartPos.mouseX - pageX) / this.parentScaleX,
-                y: (rotateStartPos.mouseY - pageY) / this.parentScaleY
-            };
-            console.log(delta)
+            let { cx, cy, startAngle, rotation } = this._rotateOpt;
+            let { clientX, clientY } = ev.touches ? ev.touches[0] : ev;
+            let x = clientX - cx,
+                y = clientY - cy,
+                angle = (180 / Math.PI) * Math.atan2(y, x),
+                currentAngle = angle - startAngle,
+                r = rotation + currentAngle;
+            r = r % 360;
+            r = r < 0 ? r + 360 : r;
+            let rotate = Math.floor(r);
+            this.$emit('rotating', rotate);
         },
         rotateUp() {
             this.rotateDrag = false;

@@ -39,7 +39,7 @@
     cursor: ew-resize;
 }
 .inactive .rotate{display: none;}
-.rotate{position: absolute; width:10px;height:10px;top:-18px;right: 50%;border: 1px solid #6c6c6c;border-radius: 100%;background-color: #ffffff;cursor: grab;transform: translateX(5px);}
+.rotate{position: absolute; width:10px;height:10px;top:-18px;right: 50%;border: 1px solid #6c6c6c;border-radius: 100%;background-color: #ffffff;cursor: grab;transform: translateX(6px);}
 .vdr-stick.not-resizable{
     display: none;
 }

@@ -61,7 +61,7 @@ export default {
     setHeight({commit}, {id, height}) {
         commit(types.CHANGE_HEIGHT, {id, height});
     },
-    setAngle({commit}, {id, angle}) {
+    setRotate({commit}, {id, angle}) {
         commit(types.CHANGE_ANGLE, {id, angle});
     },
 
