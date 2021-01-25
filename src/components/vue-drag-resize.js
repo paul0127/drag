@@ -711,6 +711,7 @@ export default {
                 stickStyle[styleMapping.y[stick[0]]] = `${this.stickSize / this.parentScaleX / -2}px`;
                 stickStyle[styleMapping.x[stick[1]]] = `${this.stickSize / this.parentScaleX / -2}px`;
                 
+                
                 return stickStyle;
             }
         },
