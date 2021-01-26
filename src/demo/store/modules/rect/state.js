@@ -17,6 +17,7 @@ export default {
       zIndex: 1,
       color: '#EF9A9A',
       active: false,
+      img_url:'./img/pic01.png'
     },
     {
       width: 200,
@@ -35,6 +36,7 @@ export default {
       zIndex: 1,
       color: '#E6C27A',
       active: false,
+      img_url:'./img/pic02.png'
     },
     {
       width: 200,
@@ -53,6 +55,7 @@ export default {
       zIndex: 2,
       color: '#AED581',
       active: false,
+      img_url:'./img/pic03.png'
     },
     {
       width: 200,
@@ -71,6 +74,13 @@ export default {
       zIndex: 3,
       color: '#81D4FA',
       active: false,
+      img_url:'./img/pic04.png'
     },
   ],
+  background:[
+    {
+      name:'test1',
+      url:'./background/background01.png'
+    }
+  ]
 }

@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div class="list" id="list">
+        <div class="list" id="list" :style="{backgroundImage:'url('+background[0].url+')'}">
             <VueDragResize v-for="(rect, index) in rects"
                            :key="index"
                            :w="rect.width"
@@ -27,7 +27,7 @@
                            v-on:resizing="changeSize($event, index)"
                            v-on:rotating="changeRotate($event, index)"
             >
-                <div class="filler" :style="{backgroundColor:rect.color}"></div>
+                <div class="filler" :style="{backgroundImage:'url('+rect.img_url+')'}"></div>
             </VueDragResize>
         </div>
 
@@ -56,6 +56,7 @@
         height: 100%;
         display: inline-block;
         position: absolute;
+        background-size: 100% 100%;
     }
 
     .list {
@@ -66,6 +67,9 @@
         right: 300px;
         box-shadow: 0 0 2px #AAA;
         background-color: white;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
     }
 
     .box-shaddow {
@@ -107,6 +111,9 @@
         computed: {
             rects() {
                 return this.$store.state.rect.rects
+            },
+            background(){
+                return this.$store.state.rect.background
             }
         },
 
