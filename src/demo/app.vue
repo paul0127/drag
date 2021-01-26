@@ -27,7 +27,9 @@
                            v-on:resizing="changeSize($event, index)"
                            v-on:rotating="changeRotate($event, index)"
             >
-                <div class="filler" :style="{backgroundImage:'url('+rect.img_url+')'}"></div>
+                <div class="filler">
+                    <img :src="rect.img_url">
+                </div>
             </VueDragResize>
         </div>
 
