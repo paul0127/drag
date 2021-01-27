@@ -36,6 +36,7 @@
         <div class="filler" :style="{ backgroundImage: 'url(' + rect.img_url + ')' }">
         </div>
       </VueDragResize>
+      <toolbar></toolbar>
       </div>
     </div>
 
