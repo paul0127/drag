@@ -1,0 +1,9 @@
+<div class="side_bar">
+    <div class="background_set">
+      <div class="title">選擇便當盒</div>
+      <div class="item" v-for="(bg, index) in background" :key="index" @click='setBackground'>
+        <img :src="bg.url" />
+        <div class="txt">{{bg.name}}</div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,24 @@
+.side_bar {
+    flex: 0 0 590px;
+    border-right: 1px solid #ccc;
+  }
+  .side_bar .background_set {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+  .side_bar .background_set .title{
+      flex: 0 0 100%;
+      line-height: 2;
+  }
+  .side_bar .background_set .item {
+    flex: 0 0 50%;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .side_bar .background_set .item img {
+    width: 100%;
+  }
+  .side_bar .background_set .item .txt{
+      text-align: center;
+  }

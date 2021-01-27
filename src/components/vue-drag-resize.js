@@ -176,7 +176,6 @@ export default {
             bottom: null,
             minWidth: this.minw,
             minHeight: this.minh,
-            rotate:this.angle
         }
     },
 
@@ -628,7 +627,8 @@ export default {
             let cx = this.rotateStartPos.left + this.rotateStartPos.width / 2,
             cy = this.rotateStartPos.top + this.rotateStartPos.height / 2,
             startAngle = (180 / Math.PI) * Math.atan2(this.rotateStartPos.mouseY - cy, this.rotateStartPos.mouseX - cx),
-            rotation = this.rotate;
+            rotation = this.angle;
+            
             this._rotateOpt = { cx, cy, startAngle, rotation };
         },
         rotateMove(ev){
@@ -642,6 +642,9 @@ export default {
             r = r % 360;
             r = r < 0 ? r + 360 : r;
             let rotate = Math.floor(r);
+            console.log(startAngle)
+            console.log(cx,clientX,cy,clientY)
+            console.log(currentAngle)
             this.$emit('rotating', rotate);
         },
         rotateUp() {
