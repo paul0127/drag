@@ -287,7 +287,6 @@ export default {
 
         bodyDown: function (ev) {
             let target = ev.target || ev.srcElement;
-
             if (!this.preventActiveBehavior) {
                 this.active = true;
             }
